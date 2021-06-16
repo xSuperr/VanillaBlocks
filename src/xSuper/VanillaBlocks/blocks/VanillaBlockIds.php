@@ -10,4 +10,6 @@ interface VanillaBlockIds
     const BASALT = 489;
     const BEEHIVE = 474;
     const BEE_NEST = 473;
+    const BAMBOO = 418;
+    const BAMBOO_SAPLING = 419;
 }

@@ -11,6 +11,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\tile\Tile;
 use xSuper\VanillaBlocks\blocks\AncientDebrisBlock;
 use xSuper\VanillaBlocks\blocks\BarrelBlock;
+use xSuper\VanillaBlocks\blocks\BarrierBlock;
+use xSuper\VanillaBlocks\blocks\BasaltBlock;
 use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
 
 class VanillaBlocks extends PluginBase implements Listener
@@ -21,6 +23,8 @@ class VanillaBlocks extends PluginBase implements Listener
 
         self::registerBlock(new AncientDebrisBlock());
         self::registerBlock(new BarrelBlock());
+        self::registerBlock(new BarrierBlock());
+        self::registerBlock(new BasaltBlock());
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
     }
 

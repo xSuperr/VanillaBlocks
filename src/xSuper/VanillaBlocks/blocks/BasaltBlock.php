@@ -9,51 +9,53 @@ use pocketmine\block\BlockToolType;
 use pocketmine\block\Solid;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
+use pocketmine\item\TieredTool;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
-use pocketmine\tile\Tile;
-use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
 
-class BarrelBlock extends Solid
-{
+class BasaltBlock extends Solid {
     use PlaceholderTrait;
 
     public function __construct(int $meta = 0)
     {
-        parent::__construct(VanillaBlockIds::BARREL, $meta, "Barrel");
+        parent::__construct(VanillaBlockIds::BASALT, $meta, "Basalt");
     }
 
     public function getBlastResistance(): float
     {
-        return 2.5;
+        return 4.2;
     }
 
     public function getHardness(): float
     {
-        return 2.5;
+        return 1.25;
     }
 
     public function getToolType(): int
     {
-        return BlockToolType::TYPE_AXE;
+        return BlockToolType::TYPE_PICKAXE;
+    }
+
+    public function getToolHarvestLevel(): int
+    {
+        return TieredTool::TIER_WOODEN;
     }
 
     public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null): bool
     {
         $damage = 0;
-        if ($player !== null) {
-            $faces = [4, 2, 5, 3];
+        if($player !== null) {
+            $faces = [1, 2, 1, 2];
             $damage = $faces[$player->getDirection()];
             if ($player->getPitch() > 45) {
-                $damage = 1;
-            } else if ($player->getPitch() < -45) {
                 $damage = 0;
+            } else if ($player->getPitch() < -45) {
+                $damage = 5;
             }
         }
 
         $this->setDamage($damage);
-        $nbt = BarrelTile::createNBT($this);
-        $this->getLevel()->setBlock($blockReplace, new Placeholder($this, Tile::createTile("Barrel", $this->getLevel(), $nbt)), true);
+        $this->getLevel()->setBlock($blockReplace, new Placeholder($this), true, true);
         return true;
     }
 
@@ -63,14 +65,6 @@ class BarrelBlock extends Solid
             ItemFactory::get(255 - $this->getId())
         ];
     }
-
-    public function onActivate(Item $item, Player $player = null): bool
-    {
-        if ($player !== null) {
-            $tile = $this->getLevel()->getTile($this);
-            if ($tile instanceof BarrelTile) $player->addWindow($tile->getInventory());
-        }
-        return true;
-    }
 }
+
 

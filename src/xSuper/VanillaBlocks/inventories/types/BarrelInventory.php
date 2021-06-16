@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace xSuper\VanillaBlocks\inventories\types;
 
+use JavierLeon9966\ExtendedBlocks\block\Placeholder;
 use pocketmine\inventory\ContainerInventory;
 use pocketmine\level\Position;
-use pocketmine\network\mcpe\protocol\BlockEventPacket;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\network\mcpe\protocol\types\WindowTypes;
 use pocketmine\Player;
@@ -53,29 +53,31 @@ class BarrelInventory extends ContainerInventory
         parent::onOpen($who);
 
         if(count($this->getViewers()) === 1 and $this->getHolder()->isValid()){
-            $this->broadcastBlockEventPacket(true);
             $this->getHolder()->getLevelNonNull()->broadcastLevelSoundEvent($this->getHolder()->add(0.5, 0.5, 0.5), $this->getOpenSound());
+        }
+
+        $block = $this->getHolder()->getBlock();
+        if ($block instanceof Placeholder) {
+            $block = $this->holder->getBlock(true);
+            $meta = $block->getDamage();
+            $block->setDamage(($meta & 0x07) | (0x08));
+            $this->holder->getLevelNonNull()->setBlock($this->holder, new Placeholder($block, $this->getHolder()), true);
         }
     }
 
     public function onClose(Player $who) : void{
         if(count($this->getViewers()) === 1 and $this->getHolder()->isValid()){
-            $this->broadcastBlockEventPacket(false);
             $this->getHolder()->getLevelNonNull()->broadcastLevelSoundEvent($this->getHolder()->add(0.5, 0.5, 0.5), $this->getCloseSound());
         }
+        $block = $this->getHolder()->getBlock();
+        if ($block instanceof Placeholder) {
+            $block = $this->holder->getBlock(true);
+            $meta = $block->getDamage();
+            $block->setDamage(($meta & 0x07) | (0));
+            $this->getHolder()->setInventory($this);
+            $this->holder->getLevelNonNull()->setBlock($this->holder, new Placeholder($block, $this->getHolder()), true);
+        }
+
         parent::onClose($who);
-    }
-
-    // TODO: BARREL
-    protected function broadcastBlockEventPacket(bool $isOpen) : void{
-        $holder = $this->getHolder();
-
-        $pk = new BlockEventPacket();
-        $pk->x = (int) $holder->x;
-        $pk->y = (int) $holder->y;
-        $pk->z = (int) $holder->z;
-        $pk->eventType = 3; //it's always 1 for a chest
-        $pk->eventData = $isOpen ? 1 : 0;
-        $holder->getLevelNonNull()->broadcastPacketToViewers($holder, $pk);
     }
 }
