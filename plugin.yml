@@ -1,0 +1,7 @@
+name: VanillaBlocks
+version: 1.0.0
+api: 3.0.0
+main: xSuper\VanillaBlocks\VanillaBlocks
+author: xSuper
+depend:
+  - ExtendedBlocks
