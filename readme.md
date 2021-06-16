@@ -8,8 +8,8 @@ required.
 ## Current Blocks:
 
 - [X] Ancient Debris
-- [X] Barrels
-- [X] Basalt
-- [X] Barriers - [/give player -161]
+- [X] Barrels [Open animation needed]
+- [ ] Basalt
+- [ ] Barriers
 - [ ] Beehives [No functionality]
 - [ ] Bee Nests [No Functionality]
