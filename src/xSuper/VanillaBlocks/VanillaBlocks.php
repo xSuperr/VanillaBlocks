@@ -13,7 +13,11 @@ use xSuper\VanillaBlocks\blocks\AncientDebrisBlock;
 use xSuper\VanillaBlocks\blocks\BarrelBlock;
 use xSuper\VanillaBlocks\blocks\BarrierBlock;
 use xSuper\VanillaBlocks\blocks\BasaltBlock;
+use xSuper\VanillaBlocks\blocks\LanternBlock;
+use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
+use xSuper\VanillaBlocks\blocks\StrippedLogBlock;
 use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
+use xSuper\VanillaBlocks\blocks\VanillaBlockIds;
 
 class VanillaBlocks extends PluginBase implements Listener
 {
@@ -25,6 +29,16 @@ class VanillaBlocks extends PluginBase implements Listener
         self::registerBlock(new BarrelBlock());
         self::registerBlock(new BarrierBlock());
         self::registerBlock(new BasaltBlock());
+        self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_OAK, "Stripped Oak Log"));
+        self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_SPRUCE, "Stripped Spruce Log"));
+        self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_BIRCH, "Stripped Birch Log"));
+        self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_JUNGLE, "Stripped Jungle Log"));
+        self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_ACACIA, "Stripped Acacia Log"));
+        self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_DARK_OAK, "Stripped Dark Oak Log"));
+        self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_CRIMSON, "Stripped Crimson Stem"));
+        self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_WARPED, "Stripped Warped Log"));
+        self::registerBlock(new NetherGoldOreBlock());
+        self::registerBlock(new LanternBlock());
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
     }
 

@@ -11,5 +11,9 @@ required.
 - [X] Barrels
 - [X] Basalt
 - [X] Barriers - [/give player -161]
+- [X] Nether Gold Ore  
+- [X] Lanterns  
+- [ ] Amethyst Block [The ID is Unmapped (PocketMine doesnt have it in its protocol?)]
+- [X] Stripped Logs [Need to add functionality]  
 - [ ] Beehives [No functionality]
 - [ ] Bee Nests [No Functionality]
