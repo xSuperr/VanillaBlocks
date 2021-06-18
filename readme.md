@@ -12,8 +12,15 @@ required.
 - [X] Basalt
 - [X] Barriers - [/give player -161]
 - [X] Nether Gold Ore  
-- [X] Lanterns  
+- [X] Lanterns
+- [X] Campfire  (TODO:
+  * Normal Campfire Item (Unmapped ID)
+  * Breaking gives correct items (Waiting for ^)  
+    
+  )  
+  
 - [ ] Amethyst Block [The ID is Unmapped (PocketMine doesnt have it in its protocol?)]
 - [X] Stripped Logs [Need to add functionality]  
 - [ ] Beehives [No functionality]
 - [ ] Bee Nests [No Functionality]
+- [ ] Chains [Unmapped ID]

@@ -13,17 +13,20 @@ use xSuper\VanillaBlocks\blocks\AncientDebrisBlock;
 use xSuper\VanillaBlocks\blocks\BarrelBlock;
 use xSuper\VanillaBlocks\blocks\BarrierBlock;
 use xSuper\VanillaBlocks\blocks\BasaltBlock;
+use xSuper\VanillaBlocks\blocks\CampfireBlock;
 use xSuper\VanillaBlocks\blocks\LanternBlock;
 use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
 use xSuper\VanillaBlocks\blocks\StrippedLogBlock;
 use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
+use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
 use xSuper\VanillaBlocks\blocks\VanillaBlockIds;
 
-class VanillaBlocks extends PluginBase implements Listener
+class VanillaBlocks extends PluginBase
 {
+    private static VanillaBlocks $instance;
     public function onEnable(): void
     {
-        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        self::$instance = $this;
 
         self::registerBlock(new AncientDebrisBlock());
         self::registerBlock(new BarrelBlock());
@@ -39,12 +42,19 @@ class VanillaBlocks extends PluginBase implements Listener
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_WARPED, "Stripped Warped Log"));
         self::registerBlock(new NetherGoldOreBlock());
         self::registerBlock(new LanternBlock());
+        self::registerBlock(new CampfireBlock());
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
+        Tile::registerTile(CampfireTile::class, ["Campfire"]);
     }
 
     public static function registerBlock(Block $block, $override = true, $creative = true): void
     {
         BlockFactory::registerBlock($block, $override);
         if ($creative) Item::addCreativeItem(ItemFactory::get($block->getItemId()));
+    }
+
+    public static function getInstance(): VanillaBlocks
+    {
+        return self::$instance;
     }
 }

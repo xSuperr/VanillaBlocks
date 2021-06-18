@@ -52,8 +52,7 @@ class BarrelBlock extends Solid
         }
 
         $this->setDamage($damage);
-        $nbt = BarrelTile::createNBT($this);
-        $this->getLevel()->setBlock($blockReplace, new Placeholder($this, Tile::createTile("Barrel", $this->getLevel(), $nbt)), true);
+        $this->getLevel()->setBlock($blockReplace, new Placeholder($this, Tile::createTile("Barrel", $this->getLevel(), BarrelTile::createNBT($this))), true);
         return true;
     }
 

@@ -23,4 +23,5 @@ interface VanillaBlockIds
     const STRIPPED_WARPED = 496;
     const NETHER_GOLD_ORE = 543;
     const LANTERN = 463;
+    const CAMPFIRE = 464;
 }
