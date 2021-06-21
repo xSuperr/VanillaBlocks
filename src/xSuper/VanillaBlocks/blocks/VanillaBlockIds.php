@@ -8,10 +8,6 @@ interface VanillaBlockIds
     const BARREL = 458;
     const BARRIER = 416;
     const BASALT = 489;
-    const BEEHIVE = 474;
-    const BEE_NEST = 473;
-    const BAMBOO = 418;
-    const BAMBOO_SAPLING = 419;
     const AMETHYST = 582;
     const STRIPPED_SPRUCE = 260;
     const STRIPPED_BIRCH = 261;
@@ -24,4 +20,12 @@ interface VanillaBlockIds
     const NETHER_GOLD_ORE = 543;
     const LANTERN = 463;
     const CAMPFIRE = 464;
+    const BLACKSTONE = 528;
+    const POLISHED_BLACKSTONE = 546;
+    const CHISELED_POLISHED_BLACKSTONE = 534;
+    const POLISHED_BLACKSTONE_BRICKS = 529;
+    const CRACKED_POLISHED_BLACKSTONE_BRICKS = 535;
+    const BLACKSTONE_WALL = 532;
+    const POLISHED_BLACKSTONE_WALL = 552;
+    const POLISHED_BLACKSTONE_BRICK_WALL = 533;
 }

@@ -16,7 +16,8 @@ class BarrelTile extends Spawnable implements InventoryHolder, Container, Placeh
     use ContainerTrait;
     use PlaceholderTrait;
 
-    private BarrelInventory $inventory;
+    /** @var BarrelInventory */
+    private $inventory;
 
     public function getName(): string{
         return "Barrel";

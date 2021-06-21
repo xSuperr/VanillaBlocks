@@ -14,7 +14,6 @@ use pocketmine\item\ItemFactory;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 use pocketmine\tile\Tile;
-use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
 use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
 
 class CampfireBlock extends Solid

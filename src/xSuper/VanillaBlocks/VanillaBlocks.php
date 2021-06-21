@@ -4,18 +4,25 @@ namespace xSuper\VanillaBlocks;
 
 use JavierLeon9966\ExtendedBlocks\block\BlockFactory;
 use pocketmine\block\Block;
-use pocketmine\event\Listener;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\plugin\PluginBase;
+use pocketmine\scheduler\ClosureTask;
 use pocketmine\tile\Tile;
 use xSuper\VanillaBlocks\blocks\AncientDebrisBlock;
 use xSuper\VanillaBlocks\blocks\BarrelBlock;
 use xSuper\VanillaBlocks\blocks\BarrierBlock;
 use xSuper\VanillaBlocks\blocks\BasaltBlock;
+use xSuper\VanillaBlocks\blocks\BlackstoneBlock;
+use xSuper\VanillaBlocks\blocks\BlackstoneWall;
 use xSuper\VanillaBlocks\blocks\CampfireBlock;
+use xSuper\VanillaBlocks\blocks\ChiseledPolishedBlackstoneBlock;
+use xSuper\VanillaBlocks\blocks\CrackedPolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\LanternBlock;
 use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
+use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBlock;
+use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBricksBlock;
+use xSuper\VanillaBlocks\blocks\PolishedBlackstoneWallBlock;
 use xSuper\VanillaBlocks\blocks\StrippedLogBlock;
 use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
 use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
@@ -23,11 +30,20 @@ use xSuper\VanillaBlocks\blocks\VanillaBlockIds;
 
 class VanillaBlocks extends PluginBase
 {
-    private static VanillaBlocks $instance;
+    /** @var VanillaBlocks */
+    private static $instance;
+
     public function onEnable(): void
     {
         self::$instance = $this;
 
+        VanillaBlocks::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function (): void{ // Add a delay on this because Item::initCreativeItems() has to be ran before blocks
+            self::Init();
+        }), 20);
+    }
+
+    public static function Init(): void
+    {
         self::registerBlock(new AncientDebrisBlock());
         self::registerBlock(new BarrelBlock());
         self::registerBlock(new BarrierBlock());
@@ -42,7 +58,15 @@ class VanillaBlocks extends PluginBase
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_WARPED, "Stripped Warped Log"));
         self::registerBlock(new NetherGoldOreBlock());
         self::registerBlock(new LanternBlock());
-        self::registerBlock(new CampfireBlock());
+        self::registerBlock(new CampfireBlock(), true, false);
+        self::registerBlock(new BlackstoneBlock());
+        self::registerBlock(new PolishedBlackstoneBlock());
+        self::registerBlock(new ChiseledPolishedBlackstoneBlock());
+        self::registerBlock(new PolishedBlackstoneBricksBlock());
+        self::registerBlock(new CrackedPolishedBlackstoneBricksBlock());
+        self::registerBlock(new BlackstoneWall(VanillaBlockIds::BLACKSTONE_WALL, "Blackstone Wall"));
+        self::registerBlock(new BlackstoneWall(VanillaBlockIds::POLISHED_BLACKSTONE_BRICK_WALL, "Polished Blackstone Brick Wall"));
+        self::registerBlock(new PolishedBlackstoneWallBlock());
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
         Tile::registerTile(CampfireTile::class, ["Campfire"]);
     }

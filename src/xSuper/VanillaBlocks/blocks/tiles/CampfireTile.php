@@ -16,21 +16,29 @@ use xSuper\VanillaBlocks\VanillaBlocks;
 class CampfireTile extends Spawnable implements PlaceholderInterface {
     use PlaceholderTrait;
 
-    private ?Item $Item1 = null;
-    private ?Item $Item2 = null;
-    private ?Item $Item3 = null;
-    private ?Item $Item4 = null;
+    /** @var ?Item */
+    private $Item1 = null;
+    /** @var ?Item */
+    private $Item2 = null;
+    /** @var ?Item */
+    private $Item3 = null;
+    /** @var ?Item */
+    private $Item4 = null;
 
-    private int $ItemTime1 = 0;
-    private int $ItemTime2 = 0;
-    private int $ItemTime3 = 0;
-    private int $ItemTime4 = 0;
+    /** @var int */
+    private $ItemTime1 = 0;
+    /** @var int */
+    private $ItemTime2 = 0;
+    /** @var int */
+    private $ItemTime3 = 0;
+    /** @var int */
+    private $ItemTime4 = 0;
 
     /**
      * @var bool
      * Checks if the campfire is updating
      */
-    private bool $ticking = false;
+    private $ticking = false;
 
     public function __construct(Level $level, CompoundTag $nbt)
     {
