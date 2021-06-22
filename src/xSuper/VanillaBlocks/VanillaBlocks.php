@@ -58,7 +58,7 @@ class VanillaBlocks extends PluginBase
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_WARPED, "Stripped Warped Log"));
         self::registerBlock(new NetherGoldOreBlock());
         self::registerBlock(new LanternBlock());
-        self::registerBlock(new CampfireBlock(), true, false);
+        self::registerBlock(new CampfireBlock());
         self::registerBlock(new BlackstoneBlock());
         self::registerBlock(new PolishedBlackstoneBlock());
         self::registerBlock(new ChiseledPolishedBlackstoneBlock());
