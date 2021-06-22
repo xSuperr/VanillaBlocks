@@ -19,6 +19,7 @@ interface VanillaBlockIds
     const STRIPPED_WARPED = 496;
     const NETHER_GOLD_ORE = 543;
     const LANTERN = 463;
+    const SOUL_LANTERN = 524;
     const CAMPFIRE = 464;
     const BLACKSTONE = 528;
     const POLISHED_BLACKSTONE = 546;

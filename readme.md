@@ -13,10 +13,7 @@ required.
 - [X] Barriers - [/give player -161]
 - [X] Nether Gold Ore  
 - [X] Lanterns
-- [X] Campfire  (TODO:
-  * Normal Campfire Item (Unmapped ID)
-  * Breaking gives correct items (Waiting for ^)
-  )  
+- [X] Campfire
     
 - [X] Blackstone Block Variants
 - [ ] Amethyst Block [The ID is Unmapped (PocketMine doesnt have it in its protocol?)]

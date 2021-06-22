@@ -80,7 +80,7 @@ class CampfireBlock extends Solid
         $tile = $this->getLevel()->getTile($this);
         if ($tile instanceof CampfireTile) {
             $drops = $tile->getItems();
-            $drops[] = ItemFactory::get(255 - $this->getId());
+            $drops[] = ItemFactory::get(720);
         } else $drops = [];
 
         return $drops;

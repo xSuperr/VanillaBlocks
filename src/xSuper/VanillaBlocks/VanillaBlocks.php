@@ -19,6 +19,7 @@ use xSuper\VanillaBlocks\blocks\CampfireBlock;
 use xSuper\VanillaBlocks\blocks\ChiseledPolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\CrackedPolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\LanternBlock;
+use xSuper\VanillaBlocks\blocks\SoulLanternBlock;
 use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBricksBlock;
@@ -27,6 +28,7 @@ use xSuper\VanillaBlocks\blocks\StrippedLogBlock;
 use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
 use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
 use xSuper\VanillaBlocks\blocks\VanillaBlockIds;
+use xSuper\VanillaBlocks\items\ItemManager;
 
 class VanillaBlocks extends PluginBase
 {
@@ -36,6 +38,8 @@ class VanillaBlocks extends PluginBase
     public function onEnable(): void
     {
         self::$instance = $this;
+
+		ItemManager::init();
 
         VanillaBlocks::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function (): void{ // Add a delay on this because Item::initCreativeItems() has to be ran before blocks
             self::Init();
@@ -58,6 +62,7 @@ class VanillaBlocks extends PluginBase
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_WARPED, "Stripped Warped Log"));
         self::registerBlock(new NetherGoldOreBlock());
         self::registerBlock(new LanternBlock());
+        self::registerBlock(new SoulLanternBlock());
         self::registerBlock(new CampfireBlock(), true, false);
         self::registerBlock(new BlackstoneBlock());
         self::registerBlock(new PolishedBlackstoneBlock());
