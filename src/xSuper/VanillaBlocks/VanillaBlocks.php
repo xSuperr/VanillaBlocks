@@ -41,6 +41,13 @@ class VanillaBlocks extends PluginBase
 
 		ItemManager::init();
 
+        VanillaBlocks::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function (): void{ // Add a delay on this because Item::initCreativeItems() has to be ran before blocks
+            self::Init();
+        }), 20);
+    }
+
+    public static function Init(): void
+    {
         self::registerBlock(new AncientDebrisBlock());
         self::registerBlock(new BarrelBlock());
         self::registerBlock(new BarrierBlock());
