@@ -28,4 +28,9 @@ interface VanillaBlockIds
     const BLACKSTONE_WALL = 532;
     const POLISHED_BLACKSTONE_WALL = 552;
     const POLISHED_BLACKSTONE_BRICK_WALL = 533;
+    const SOUL_CAMPFIRE = 545;
+    const SOUL_TORCH = 523;
+    const SOUL_LANTERN = 524;
+    const CAMPFIRE_ITEM = 720;
+    const SOUL_CAMPFIRE_ITEM = 801;
 }

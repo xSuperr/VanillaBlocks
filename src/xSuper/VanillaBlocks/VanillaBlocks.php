@@ -18,11 +18,16 @@ use xSuper\VanillaBlocks\blocks\BlackstoneWall;
 use xSuper\VanillaBlocks\blocks\CampfireBlock;
 use xSuper\VanillaBlocks\blocks\ChiseledPolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\CrackedPolishedBlackstoneBricksBlock;
+use xSuper\VanillaBlocks\blocks\items\CampfireItem;
+use xSuper\VanillaBlocks\blocks\items\SoulCampfireItem;
 use xSuper\VanillaBlocks\blocks\LanternBlock;
 use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneWallBlock;
+use xSuper\VanillaBlocks\blocks\SoulCampfireBlock;
+use xSuper\VanillaBlocks\blocks\SoulLanternBlock;
+use xSuper\VanillaBlocks\blocks\SoulTorchBlock;
 use xSuper\VanillaBlocks\blocks\StrippedLogBlock;
 use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
 use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
@@ -67,6 +72,11 @@ class VanillaBlocks extends PluginBase
         self::registerBlock(new BlackstoneWall(VanillaBlockIds::BLACKSTONE_WALL, "Blackstone Wall"));
         self::registerBlock(new BlackstoneWall(VanillaBlockIds::POLISHED_BLACKSTONE_BRICK_WALL, "Polished Blackstone Brick Wall"));
         self::registerBlock(new PolishedBlackstoneWallBlock());
+        self::registerBlock(new SoulCampfireBlock(), true, false);
+        self::registerBlock(new SoulTorchBlock());
+        self::registerBlock(new SoulLanternBlock());
+        self::registerItem(new CampfireItem());
+        self::registerItem(new SoulCampfireItem());
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
         Tile::registerTile(CampfireTile::class, ["Campfire"]);
     }
@@ -75,6 +85,12 @@ class VanillaBlocks extends PluginBase
     {
         BlockFactory::registerBlock($block, $override);
         if ($creative) Item::addCreativeItem(ItemFactory::get($block->getItemId()));
+    }
+
+    public static function registerItem(Item $item, $override = true): void
+    {
+        ItemFactory::registerItem($item, $override);
+        Item::addCreativeItem($item);
     }
 
     public static function getInstance(): VanillaBlocks
