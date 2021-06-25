@@ -23,3 +23,5 @@ required.
 - [X] Soul Torch
 - [X] Soul Campfire
 - [X] Soul Lantern
+- [X] Soul Soil  
+- [X] Scaffolding

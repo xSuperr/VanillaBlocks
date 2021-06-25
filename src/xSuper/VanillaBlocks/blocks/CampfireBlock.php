@@ -6,19 +6,18 @@ use JavierLeon9966\ExtendedBlocks\block\Placeholder;
 use JavierLeon9966\ExtendedBlocks\block\PlaceholderTrait;
 use pocketmine\block\Block;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Solid;
+use pocketmine\block\Transparent;
 use pocketmine\entity\Entity;
 use pocketmine\entity\object\ItemEntity;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
-use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\Player;
 use pocketmine\tile\Tile;
 use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
 
-class CampfireBlock extends Solid
+class CampfireBlock extends Transparent
 {
     use PlaceholderTrait;
 
@@ -121,6 +120,11 @@ class CampfireBlock extends Solid
     public function hasEntityCollision(): bool
     {
         return true;
+    }
+
+    public function getPickedItem(): Item
+    {
+        return ItemFactory::get(VanillaBlockIds::CAMPFIRE_ITEM);
     }
 }
 

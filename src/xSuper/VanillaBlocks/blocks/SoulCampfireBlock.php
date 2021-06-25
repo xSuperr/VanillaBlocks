@@ -81,7 +81,7 @@ class SoulCampfireBlock extends Solid
         $tile = $this->getLevel()->getTile($this);
         if ($tile instanceof CampfireTile) {
             $drops = $tile->getItems();
-            $drops[] = ItemFactory::get(Item::SOUL_SAND); // Soul Soil
+            $drops[] = ItemFactory::get(255 - VanillaBlockIds::SOUL_SOIL);
         } else $drops = [];
 
         return $drops;
@@ -120,6 +120,11 @@ class SoulCampfireBlock extends Solid
     public function hasEntityCollision(): bool
     {
         return true;
+    }
+
+    public function getPickedItem(): Item
+    {
+        return ItemFactory::get(VanillaBlockIds::SOUL_CAMPFIRE_ITEM);
     }
 }
 

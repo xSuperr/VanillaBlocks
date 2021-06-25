@@ -33,4 +33,10 @@ interface VanillaBlockIds
     const SOUL_LANTERN = 524;
     const CAMPFIRE_ITEM = 720;
     const SOUL_CAMPFIRE_ITEM = 801;
+    const SOUL_SOIL = 491;
+    const WARPED_DOOR = 500;
+    const WARPED_DOOR_ITEM = 756;
+    const CRIMSON_DOOR = 499;
+    const CRIMSON_DOOR_ITEM = 755;
+    const SCAFFOLDING = 420;
 }
