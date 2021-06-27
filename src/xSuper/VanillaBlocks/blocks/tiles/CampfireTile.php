@@ -44,7 +44,6 @@ class CampfireTile extends Spawnable implements PlaceholderInterface {
     {
         $task = VanillaBlocks::getInstance()->getScheduler()->scheduleRepeatingTask(new ClosureTask(function () use (& $task): void{
             if ($this->closed) {
-                /** @var $task Task */
                 $task->cancel();
                 return;
             }

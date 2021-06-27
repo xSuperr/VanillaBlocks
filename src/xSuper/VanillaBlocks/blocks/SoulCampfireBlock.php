@@ -6,7 +6,7 @@ use JavierLeon9966\ExtendedBlocks\block\Placeholder;
 use JavierLeon9966\ExtendedBlocks\block\PlaceholderTrait;
 use pocketmine\block\Block;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Transparent;
+use pocketmine\block\Solid;
 use pocketmine\entity\Entity;
 use pocketmine\entity\object\ItemEntity;
 use pocketmine\item\Item;
@@ -17,13 +17,13 @@ use pocketmine\Player;
 use pocketmine\tile\Tile;
 use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
 
-class CampfireBlock extends Transparent
+class SoulCampfireBlock extends Solid
 {
     use PlaceholderTrait;
 
     public function __construct(int $meta = 0)
     {
-        parent::__construct(VanillaBlockIds::CAMPFIRE, $meta, "Campfire");
+        parent::__construct(VanillaBlockIds::SOUL_CAMPFIRE, $meta, "Soul Campfire");
     }
 
     public function getBlastResistance(): float
@@ -43,7 +43,7 @@ class CampfireBlock extends Transparent
 
     public function getLightLevel(): int
     {
-        return 15;
+        return 10;
     }
 
     public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null): bool
@@ -76,12 +76,12 @@ class CampfireBlock extends Transparent
         }
     }
 
-    public function getDrops(Item $item): array // Give a new item because the old items wouldn't stack (Due to damage?)
+    public function getDrops(Item $item): array
     {
         $tile = $this->getLevel()->getTile($this);
         if ($tile instanceof CampfireTile) {
             $drops = $tile->getItems();
-            $drops[] = ItemFactory::get(Item::COAL, 1, 2);
+            $drops[] = ItemFactory::get(255 - VanillaBlockIds::SOUL_SOIL);
         } else $drops = [];
 
         return $drops;
@@ -124,8 +124,9 @@ class CampfireBlock extends Transparent
 
     public function getPickedItem(): Item
     {
-        return ItemFactory::get(VanillaBlockIds::CAMPFIRE_ITEM);
+        return ItemFactory::get(VanillaBlockIds::SOUL_CAMPFIRE_ITEM);
     }
 }
+
 
 
