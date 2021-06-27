@@ -23,6 +23,7 @@ use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneWallBlock;
+use xSuper\VanillaBlocks\blocks\PrisStairs;
 use xSuper\VanillaBlocks\blocks\StrippedLogBlock;
 use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
 use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
@@ -44,6 +45,9 @@ class VanillaBlocks extends PluginBase
 
     public static function Init(): void
     {
+        self::registerBlock(new PrisStairs(VanillaBlockIds::PRISMARINE_STAIRS, "Prismarine Stairs"));
+        self::registerBlock(new PrisStairs(VanillaBlockIds::PRISMARINE_BRICK_STAIRS, "Prismarine Brick Stairs"));
+        self::registerBlock(new PrisStairs(VanillaBlockIds::DARK_PRISMARINE_STAIRS, "Dark Prismarine Stairs"));
         self::registerBlock(new AncientDebrisBlock());
         self::registerBlock(new BarrelBlock());
         self::registerBlock(new BarrierBlock());
