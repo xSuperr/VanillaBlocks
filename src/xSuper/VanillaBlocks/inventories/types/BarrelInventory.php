@@ -72,17 +72,16 @@ class BarrelInventory extends ContainerInventory
         if(count($this->getViewers()) === 1 and $this->getHolder()->isValid()){
             $this->getHolder()->getLevelNonNull()->broadcastLevelSoundEvent($this->getHolder()->add(0.5, 0.5, 0.5), $this->getCloseSound());
         }
-
-        /** @var BarrelTile $holder */
         $holder = $this->getHolder();
-
-        $block = $holder->getBlock();
-        if ($block instanceof Placeholder) {
-            $block = $this->holder->getBlock(true);
-            $meta = $block->getDamage();
-            $block->setDamage(($meta & 0x07) | (0));
-            $holder->setInventory($this);
-            $this->holder->getLevelNonNull()->setBlock($this->holder, new Placeholder($block, $this->getHolder()), true);
+        if ($holder instanceof BarrelTile) {
+            $block = $holder->getBlock();
+            if ($block instanceof Placeholder) {
+                $block = $this->holder->getBlock(true);
+                $meta = $block->getDamage();
+                $block->setDamage(($meta & 0x07) | (0));
+                $holder->setInventory($this);
+                $this->holder->getLevelNonNull()->setBlock($this->holder, new Placeholder($block, $this->getHolder()), true);
+            }
         }
 
         parent::onClose($who);

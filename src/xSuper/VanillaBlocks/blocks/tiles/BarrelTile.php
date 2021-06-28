@@ -55,8 +55,6 @@ class BarrelTile extends Spawnable implements InventoryHolder, Container, Placeh
     public function close() : void{
         if(!$this->closed){
             $this->inventory->removeAllViewers(true);
-
-            $this->inventory = null;
             parent::close();
         }
     }
