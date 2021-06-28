@@ -39,4 +39,7 @@ interface VanillaBlockIds
     const CRIMSON_DOOR = 499;
     const CRIMSON_DOOR_ITEM = 755;
     const SCAFFOLDING = 420;
+    const PRISMARINE_STAIRS = 257;
+    const DARK_PRISMARINE_STAIRS = 258;
+    const PRISMARINE_BRICK_STAIRS = 259;
 }
