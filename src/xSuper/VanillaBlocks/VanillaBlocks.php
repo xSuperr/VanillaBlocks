@@ -32,6 +32,7 @@ use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneWallBlock;
+use xSuper\VanillaBlocks\blocks\PrismarineStairsBlock;
 use xSuper\VanillaBlocks\blocks\ScaffoldingBlock;
 use xSuper\VanillaBlocks\blocks\SoulCampfireBlock;
 use xSuper\VanillaBlocks\blocks\SoulLanternBlock;
@@ -89,6 +90,9 @@ class VanillaBlocks extends PluginBase implements Listener
         self::registerItem(new SoulCampfireItem());
         self::registerBlock(new SoulSoilBlock());
         self::registerBlock(new ScaffoldingBlock());
+        self::registerBlock(new PrismarineStairsBlock(VanillaBlockIds::PRISMARINE_STAIRS, "Prismarine Stairs"));
+        self::registerBlock(new PrismarineStairsBlock(VanillaBlockIds::PRISMARINE_BRICK_STAIRS, "Prismarine Brick Stairs"));
+        self::registerBlock(new PrismarineStairsBlock(VanillaBlockIds::DARK_PRISMARINE_STAIRS, "Dark Prismarine Stairs"));
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
         Tile::registerTile(CampfireTile::class, ["Campfire"]);
     }

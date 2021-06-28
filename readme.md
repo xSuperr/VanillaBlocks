@@ -16,12 +16,15 @@ required.
 - [X] Campfire
 - [X] Blackstone Block Variants
 - [ ] Amethyst Block [Unmapped]
-- [X] Stripped Logs 
-- [ ] Beehives 
-- [ ] Bee Nests 
+- [X] Stripped Logs
+- [ ] Beehives
+- [ ] Bee Nests
 - [ ] Chains
 - [X] Soul Torch
 - [X] Soul Campfire
 - [X] Soul Lantern
 - [X] Soul Soil  
 - [X] Scaffolding
+- [X] Prismarine Stairs
+- [X] Prismarine Brick Stairs
+- [X] Dark Prismarine Stairs
