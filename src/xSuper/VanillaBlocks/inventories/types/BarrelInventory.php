@@ -73,7 +73,7 @@ class BarrelInventory extends ContainerInventory
             $this->getHolder()->getLevelNonNull()->broadcastLevelSoundEvent($this->getHolder()->add(0.5, 0.5, 0.5), $this->getCloseSound());
         }
         $holder = $this->getHolder();
-        if ($holder instanceof BarrelTile) {
+        if ($holder instanceof BarrelTile && !$holder->isClosed()) {
             $block = $holder->getBlock();
             if ($block instanceof Placeholder) {
                 $block = $this->holder->getBlock(true);
