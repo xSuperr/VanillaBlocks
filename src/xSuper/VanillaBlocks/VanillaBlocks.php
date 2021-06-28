@@ -4,11 +4,9 @@ namespace xSuper\VanillaBlocks;
 
 use JavierLeon9966\ExtendedBlocks\block\BlockFactory;
 use JavierLeon9966\ExtendedBlocks\block\Placeholder;
-use pocketmine\block\Air;
 use pocketmine\block\Block;
 use pocketmine\entity\Entity;
 use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;

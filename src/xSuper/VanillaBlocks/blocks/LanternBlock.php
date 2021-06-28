@@ -52,11 +52,11 @@ class LanternBlock extends Solid {
         $above = $this->getSide(Vector3::SIDE_UP);
         $meta = $this->getDamage();
         if ($meta === 0) {
-            if ($below->getId() === Item::AIR || $below->isTransparent()) {
+            if ($below->getId() === Item::AIR || ($below->isTransparent() && $below->getId() !== self::FENCE && $below->getId() !== self::COBBLESTONE_WALL)) {
                 $this->getLevelNonNull()->useBreakOn($this);
             }
         } else if ($meta === 1) {
-            if ($above->getId() === Item::AIR || $above->isTransparent()) {
+            if ($above->getId() === Item::AIR || ($above->isTransparent() && $above->getId() !== self::FENCE && $above->getId() !== self::COBBLESTONE_WALL)) {
                 $this->getLevelNonNull()->useBreakOn($this);
             }
         } else return;
@@ -67,7 +67,7 @@ class LanternBlock extends Solid {
     {
         $above = $this->getSide(Vector3::SIDE_UP);
 
-        if (!$blockClicked->isTransparent() && $face !== Vector3::SIDE_DOWN) {
+        if ((!$blockClicked->isTransparent() or $blockClicked->getId() === self::FENCE or $blockClicked->getId() === self::COBBLESTONE_WALL) && $face !== Vector3::SIDE_DOWN) {
             if ($face !== 1) return false;
             $this->setDamage(0);
             $this->getLevelNonNull()->setBlock($blockReplace, new Placeholder($this), true, true);
