@@ -13,7 +13,7 @@ use pocketmine\block\Block;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-class StairStoneBlock extends Transparent {
+class StoneStairBlock extends Transparent {
     use PlaceholderTrait;
     
     //Todo
