@@ -37,6 +37,13 @@ use xSuper\VanillaBlocks\blocks\SoulLanternBlock;
 use xSuper\VanillaBlocks\blocks\SoulSoilBlock;
 use xSuper\VanillaBlocks\blocks\SoulTorchBlock;
 use xSuper\VanillaBlocks\blocks\StrippedLogBlock;
+use xSuper\VanillaBlocks\blocks\StairWoodenBlock;
+
+use xSuper\VanillaBlocks\blocks\StairStoneBlock;
+
+use xSuper\VanillaBlocks\blocks\StairOtherBlock;
+
+use xSuper\VanillaBlocks\blocks\Trapdoor;
 use xSuper\VanillaBlocks\blocks\tiles\BarrelTile;
 use xSuper\VanillaBlocks\blocks\tiles\CampfireTile;
 use xSuper\VanillaBlocks\blocks\VanillaBlockIds;
@@ -61,7 +68,10 @@ class VanillaBlocks extends PluginBase implements Listener
         self::registerBlock(new AncientDebrisBlock());
         self::registerBlock(new BarrelBlock());
         self::registerBlock(new BarrierBlock());
-        self::registerBlock(new BasaltBlock());
+   
+			self::registerBlock(new BasaltBlock(VanillaBlockids::BASALT, "Basalt"));
+      self::registerBlock(new BasaltBlock(VanillaBlockids::POLISHED_BASALT, "Polished Basalt"));
+    self::registerBlock(new BarrelBlock());
         self::registerBlock(new StairStone(VanillaBlockids::STAIR_ANDESITE, "Andesite Stairs"));
 
     self::registerBlock(new StairStone(VanillaBlockids::STAIR_DIORITE, "Diorite Stairs"));
@@ -123,9 +133,7 @@ class VanillaBlocks extends PluginBase implements Listener
         self::registerItem(new SoulCampfireItem());
         self::registerBlock(new SoulSoilBlock());
         self::registerBlock(new ScaffoldingBlock());
-        self::registerBlock(new PrismarineStairsBlock(VanillaBlockIds::PRISMARINE_STAIRS, "Prismarine Stairs"));
-        self::registerBlock(new PrismarineStairsBlock(VanillaBlockIds::PRISMARINE_BRICK_STAIRS, "Prismarine Brick Stairs"));
-        self::registerBlock(new PrismarineStairsBlock(VanillaBlockIds::DARK_PRISMARINE_STAIRS, "Dark Prismarine Stairs"));
+    
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
         Tile::registerTile(CampfireTile::class, ["Campfire"]);
     }
