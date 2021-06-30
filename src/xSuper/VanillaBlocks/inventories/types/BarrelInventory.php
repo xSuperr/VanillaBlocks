@@ -69,11 +69,11 @@ class BarrelInventory extends ContainerInventory
     }
 
     public function onClose(Player $who) : void{
-        if(count($this->getViewers()) === 1 and $this->getHolder()->isValid()){
-            $this->getHolder()->getLevelNonNull()->broadcastLevelSoundEvent($this->getHolder()->add(0.5, 0.5, 0.5), $this->getCloseSound());
-        }
         $holder = $this->getHolder();
         if ($holder instanceof BarrelTile && !$holder->isClosed()) {
+            if(count($this->getViewers()) === 1 and $this->getHolder()->isValid()){
+                $this->getHolder()->getLevelNonNull()->broadcastLevelSoundEvent($this->getHolder()->add(0.5, 0.5, 0.5), $this->getCloseSound());
+            }
             $block = $holder->getBlock();
             if ($block instanceof Placeholder) {
                 $block = $this->holder->getBlock(true);
