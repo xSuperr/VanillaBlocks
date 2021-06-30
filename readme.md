@@ -26,4 +26,4 @@ required.
 - [X] Soul Soil  
 - [X] Scaffolding
 - [X] All Stairs
-- [X] All Trapdoor
+- [X] All Trapdoors
