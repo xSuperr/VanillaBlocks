@@ -62,6 +62,41 @@ class VanillaBlocks extends PluginBase implements Listener
         self::registerBlock(new BarrelBlock());
         self::registerBlock(new BarrierBlock());
         self::registerBlock(new BasaltBlock());
+        self::registerBlock(new StairStone(VanillaBlockids::STAIR_ANDESITE, "Andesite Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_DIORITE, "Diorite Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_POLISHED_ANDESITE, "Polished Andesite Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_POLISHED_DIORITE, "Polished Diorite Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_POLISHED_GRANITE, "Polished Granite Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_GRANITE, "Granite Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_PRISMARINE, "Prismarine Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_PRISMARINE_BRICK, "Prismarine Brick Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_MOSSY_STONE_BRICK, "Mossy Stone Brick Stairs"));
+
+    self::registerBlock(new StairStone(VanillaBlockids::STAIR_STONE, "Stone Stairs"));
+
+    self::registerBlock(new StairOther(VanillaBlockids::STAIR_SMOOTH_RED_SANDSTONE, "Smooth Red Sandstone Stairs"));
+
+    self::registerBlock(new StairOther(VanillaBlockids::STAIR_SMOOTH_SANDSTONE, "Smooth SandStone Stairs"));
+
+    self::registerBlock(new StairOther(VanillaBlockids::STAIR_MOSSY_COBBLESTONE, "Mossy Cobblestone Stairs"));
+
+    self::registerBlock(new StairOther(VanillaBlockids::STAIR_RED_NETHERBRICK, "Red NetherBrick Stairs"));
+
+    self::registerBlock(new StairOther(VanillaBlockids::STAIR_SMOOTH_QUARTZ, "Smooth Quartz Stairs"));
+
+    self::registerBlock(new StairOther(VanillaBlockids::STAIR_POLISHED_BLACKSTONE, "Polished BlackStone Stairs"));
+
+    self::registerBlock(new StairWooden(VanillaBlockids::STAIR_CRIMSON, "Crimson Stairs"));
+
+    self::registerBlock(new StairWooden(VanillaBlockids::STAIR_WARPED, "Warped Stairs"));
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_OAK, "Stripped Oak Log"));
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_SPRUCE, "Stripped Spruce Log"));
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_BIRCH, "Stripped Birch Log"));
