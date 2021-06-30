@@ -27,6 +27,8 @@ use xSuper\VanillaBlocks\blocks\items\CampfireItem;
 use xSuper\VanillaBlocks\blocks\items\SoulCampfireItem;
 use xSuper\VanillaBlocks\blocks\LanternBlock;
 use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
+use xSuper\VanillaBlocks\blocks\overrides\LogBlock;
+use xSuper\VanillaBlocks\blocks\overrides\LogBlock2;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneWallBlock;
@@ -118,6 +120,8 @@ class VanillaBlocks extends PluginBase implements Listener {
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::TRAPDOOR_DARK_OAK, "Drak Oak Trapdoor"));
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::TRAPDOOR_CRIMSON, "Crimson Trapdoor"));
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::TRAPDOOR_WARPED, "Warped Trapdoor"));
+        self::registerBlock(new LogBlock(), true, false);
+        self::registerBlock(new LogBlock2(), true, false);
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
         Tile::registerTile(CampfireTile::class, ["Campfire"]);
     }
