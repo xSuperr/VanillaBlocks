@@ -9,7 +9,7 @@ required.
 
 - [X] Ancient Debris
 - [X] Barrels
-- [X] Basalt
+- [X] Basalt and Polished Basalt
 - [X] Barriers - [/give player -161]
 - [X] Nether Gold Ore  
 - [X] Lanterns
@@ -25,6 +25,5 @@ required.
 - [X] Soul Lantern
 - [X] Soul Soil  
 - [X] Scaffolding
-- [X] Prismarine Stairs
-- [X] Prismarine Brick Stairs
-- [X] Dark Prismarine Stairs
+- [X] All Stairs
+- [X] All Trapdoor
