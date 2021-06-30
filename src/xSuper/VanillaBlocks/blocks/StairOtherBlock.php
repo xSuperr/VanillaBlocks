@@ -13,7 +13,7 @@ use pocketmine\block\Block;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-class StairOther extends Transparent {
+class StairOtherBlock extends Transparent {
     use PlaceholderTrait;
     
     public function __construct(int $id, string $name, int $meta = 0) {
