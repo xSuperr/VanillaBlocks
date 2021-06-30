@@ -13,9 +13,10 @@ use pocketmine\block\Block;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-class StairStone extends Transparent {
+class StairStoneBlock extends Transparent {
     use PlaceholderTrait;
     
+    //Todo
       //BlackStone
       //BlackStone Brick
     
