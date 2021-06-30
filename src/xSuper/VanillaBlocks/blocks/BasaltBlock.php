@@ -16,9 +16,9 @@ use pocketmine\Player;
 class BasaltBlock extends Solid {
     use PlaceholderTrait;
 
-    public function __construct(int $meta = 0)
+    public function __construct(int $id, string $name, int $meta = 0)
     {
-        parent::__construct(VanillaBlockIds::BASALT, $meta, "Basalt");
+        parent::__construct($id, $meta, $name);
     }
 
     public function getBlastResistance(): float
