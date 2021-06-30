@@ -4,7 +4,7 @@ namespace xSuper\VanillaBlocks\blocks;
 
 use JavierLeon9966\ExtendedBlocks\block\Placeholder;
 use JavierLeon9966\ExtendedBlocks\block\PlaceholderTrait;
-use pocketmine\block\Stair;
+use pocketmine\block\Transparent;
 use pocketmine\block\BlockToolType;
 use pocketmine\item\TieredTool;
 use pocketmine\math\AxisAlignedBB;
@@ -13,7 +13,7 @@ use pocketmine\block\Block;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-class StairWoodenBlock extends Stair {
+class WoodenStairBlock extends Transparent {
     use PlaceholderTrait;
     
     public function __construct(int $id, string $name = null, int $meta = 0) {
