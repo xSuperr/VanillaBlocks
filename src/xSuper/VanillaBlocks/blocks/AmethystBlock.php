@@ -10,7 +10,7 @@ use pocketmine\item\TieredTool;
 class AmethystBlock extends Transparent {
     use PlaceholderTrait;
 
-    //TODO: Unmapped ID
+    // TODO: Unmapped ID
     public function __construct(int $meta = 0)
     {
         parent::__construct(VanillaBlockIds::AMETHYST, $meta, "Amethyst");

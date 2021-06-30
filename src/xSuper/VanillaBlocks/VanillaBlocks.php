@@ -14,6 +14,7 @@ use pocketmine\level\Position;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\tile\Tile;
+use ReflectionException;
 use xSuper\VanillaBlocks\blocks\AncientDebrisBlock;
 use xSuper\VanillaBlocks\blocks\BarrelBlock;
 use xSuper\VanillaBlocks\blocks\BarrierBlock;
@@ -60,6 +61,9 @@ class VanillaBlocks extends PluginBase implements Listener {
         }), 20);
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public static function Init(): void
     {
         self::registerBlock(new AncientDebrisBlock());
@@ -116,7 +120,7 @@ class VanillaBlocks extends PluginBase implements Listener {
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::BIRCH_TRAPDOOR, "Birch Trapdoor"));
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::JUNGLE_TRAPDOOR, "Jungle Trapdoor"));
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::ACACIA_TRAPDOOR, "Acacia Trapdoor"));
-        self::registerBlock(new TrapdoorBlock(VanillaBlockIds::DARK_OAK_TRAPDOOR, "Drak Oak Trapdoor"));
+        self::registerBlock(new TrapdoorBlock(VanillaBlockIds::DARK_OAK_TRAPDOOR, "Dark Oak Trapdoor"));
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::CRIMSON_TRAPDOOR, "Crimson Trapdoor"));
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::WARPED_TRAPDOOR, "Warped Trapdoor"));
         self::registerBlock(new LogBlock(), true, false);
