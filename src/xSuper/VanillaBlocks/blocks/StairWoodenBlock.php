@@ -6,14 +6,14 @@ use JavierLeon9966\ExtendedBlocks\block\Placeholder;
 use JavierLeon9966\ExtendedBlocks\block\PlaceholderTrait;
 use pocketmine\block\Stair;
 use pocketmine\block\BlockToolType;
-//use pocketmine\item\TieredTool;
-//use pocketmine\math\AxisAlignedBB;
+use pocketmine\item\TieredTool;
+use pocketmine\math\AxisAlignedBB;
 use pocketmine\item\Item;
 use pocketmine\block\Block;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-class StairWooden extends Stair {
+class StairWoodenBlock extends Stair {
     use PlaceholderTrait;
     
     public function __construct(int $id, string $name = null, int $meta = 0) {
