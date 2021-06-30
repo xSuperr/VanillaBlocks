@@ -52,10 +52,17 @@ class BarrelTile extends Spawnable implements InventoryHolder, Container, Placeh
     protected function addAdditionalSpawnData(CompoundTag $nbt): void{
     }
 
-    public function close() : void{
-        if(!$this->closed){
+    public function close() : void
+    {
+        if (!$this->closed) {
+            $this->closed = true;
+
+            if ($this->isValid()) {
+                $this->level->removeTile($this);
+                $this->setLevel();
+            }
+
             $this->inventory->removeAllViewers(true);
-            parent::close();
         }
     }
 }
