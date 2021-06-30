@@ -30,20 +30,16 @@ class TrapdoorBlock extends Transparent {
     }
     
     public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null): bool{
-      $directions = [
-        0 => 1,
-        1 => 3,
-        2 => 0,
-        3 => 2
+      $faces = [
+        0 => 0,
+        1 => 2,
+        2 => 1,
+        3 => 3
       ];
-    
-      if($player !== null){
-        $damage = $directions[$player->getDirection() & 0x03];
-      }
+      $damage = $player !== null ? $faces[$player->getDirection() & 0x03] : 0;
       if(($clickVector->y > 0.5 and $face !== self::SIDE_UP) or $face === self::SIDE_DOWN){
         $damage |= self::MASK_UPPER; //top half of block
       }
-      
       $this->setDamage($damage);
       return $this->getLevelNonNull()->setBlock($this, new Placeholder($this), true);
     }
