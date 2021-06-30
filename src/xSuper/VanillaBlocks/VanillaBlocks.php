@@ -69,44 +69,48 @@ class VanillaBlocks extends PluginBase implements Listener
         self::registerBlock(new BarrelBlock());
         self::registerBlock(new BarrierBlock());
    
-			self::registerBlock(new BasaltBlock(VanillaBlockids::BASALT, "Basalt"));
-      self::registerBlock(new BasaltBlock(VanillaBlockids::POLISHED_BASALT, "Polished Basalt"));
+			self::registerBlock(new BasaltBlock(VanillaBlockIds::BASALT, "Basalt"));
+      self::registerBlock(new BasaltBlock(VanillaBlockIds::POLISHED_BASALT, "Polished Basalt"));
     self::registerBlock(new BarrelBlock());
-        self::registerBlock(new StairStone(VanillaBlockids::STAIR_ANDESITE, "Andesite Stairs"));
+	    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_ANDESITE, "Andesite Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_DIORITE, "Diorite Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_DIORITE, "Diorite Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_POLISHED_ANDESITE, "Polished Andesite Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_POLISHED_ANDESITE, "Polished Andesite Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_POLISHED_DIORITE, "Polished Diorite Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_POLISHED_DIORITE, "Polished Diorite Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_POLISHED_GRANITE, "Polished Granite Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_POLISHED_GRANITE, "Polished Granite Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_GRANITE, "Granite Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_GRANITE, "Granite Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_PRISMARINE, "Prismarine Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_PRISMARINE, "Prismarine Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_PRISMARINE_BRICK, "Prismarine Brick Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_PRISMARINE_BRICK, "Prismarine Brick Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_MOSSY_STONE_BRICK, "Mossy Stone Brick Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_MOSSY_STONE_BRICK, "Mossy Stone Brick Stairs"));
 
-    self::registerBlock(new StairStone(VanillaBlockids::STAIR_STONE, "Stone Stairs"));
+    self::registerBlock(new StairStoneBlock(VanillaBlockIds::STAIR_STONE, "Stone Stairs"));
 
-    self::registerBlock(new StairOther(VanillaBlockids::STAIR_SMOOTH_RED_SANDSTONE, "Smooth Red Sandstone Stairs"));
+    self::registerBlock(new StairOtherBlock(VanillaBlockIds::STAIR_SMOOTH_RED_SANDSTONE, "Smooth Red Sandstone Stairs"));
 
-    self::registerBlock(new StairOther(VanillaBlockids::STAIR_SMOOTH_SANDSTONE, "Smooth SandStone Stairs"));
+    self::registerBlock(new StairOtherBlock(VanillaBlockIds::STAIR_SMOOTH_SANDSTONE, "Smooth SandStone Stairs"));
 
-    self::registerBlock(new StairOther(VanillaBlockids::STAIR_MOSSY_COBBLESTONE, "Mossy Cobblestone Stairs"));
+    self::registerBlock(new StairOtherBlock(VanillaBlockIds::STAIR_MOSSY_COBBLESTONE, "Mossy Cobblestone Stairs"));
 
-    self::registerBlock(new StairOther(VanillaBlockids::STAIR_RED_NETHERBRICK, "Red NetherBrick Stairs"));
+    self::registerBlock(new StairOtherBlock(VanillaBlockIds::STAIR_RED_NETHERBRICK, "Red NetherBrick Stairs"));
 
-    self::registerBlock(new StairOther(VanillaBlockids::STAIR_SMOOTH_QUARTZ, "Smooth Quartz Stairs"));
+    self::registerBlock(new StairOtherBlock(VanillaBlockIds::STAIR_SMOOTH_QUARTZ, "Smooth Quartz Stairs"));
 
-    self::registerBlock(new StairOther(VanillaBlockids::STAIR_POLISHED_BLACKSTONE, "Polished BlackStone Stairs"));
+    self::registerBlock(new StairOtherBlock(VanillaBlockIds::STAIR_POLISHED_BLACKSTONE, "Polished BlackStone Stairs"));
 
-    self::registerBlock(new StairWooden(VanillaBlockids::STAIR_CRIMSON, "Crimson Stairs"));
+    self::registerBlock(new StairWoodenBlock(VanillaBlockIds::STAIR_CRIMSON, "Crimson Stairs"));
 
-    self::registerBlock(new StairWooden(VanillaBlockids::STAIR_WARPED, "Warped Stairs"));
+    self::registerBlock(new StairWoodenBlock(VanillaBlockIds::STAIR_WARPED, "Warped Stairs"));
+        
+
+
+
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_OAK, "Stripped Oak Log"));
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_SPRUCE, "Stripped Spruce Log"));
         self::registerBlock(new StrippedLogBlock(VanillaBlockIds::STRIPPED_BIRCH, "Stripped Birch Log"));
@@ -133,6 +137,25 @@ class VanillaBlocks extends PluginBase implements Listener
         self::registerItem(new SoulCampfireItem());
         self::registerBlock(new SoulSoilBlock());
         self::registerBlock(new ScaffoldingBlock());
+			self::registerBlock(new Trapdoor(VanillaBlockIds::TRAPDOOR_SPRUCE, "Spruce Trapdoor"));
+    self::registerBlock(new Trapdoor(VanillaBlockIds::TRAPDOOR_BIRCH, "Birch Trapdoor"));
+    self::registerBlock(new Trapdoor(VanillaBlockIds::TRAPDOOR_JUNGLE, "Jungle Trapdoor"));
+    self::registerBlock(new Trapdoor(VanillaBlockIds::TRAPDOOR_ACACIA, "Acacia Trapdoor"));
+    self::registerBlock(new Trapdoor(VanillaBlockIds::TRAPDOOR_DARK_OAK, "Drak Oak Trapdoor"));
+    self::registerBlock(new Trapdoor(VanillaBlockIds::TRAPDOOR_CRIMSON, "Crimson Trapdoor"));
+    self::registerBlock(new Trapdoor(VanillaBlockIds::TRAPDOOR_WARPED, "Warped Trapdoor"));
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
     
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
         Tile::registerTile(CampfireTile::class, ["Campfire"]);
