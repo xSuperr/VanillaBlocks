@@ -8,6 +8,7 @@ interface VanillaBlockIds
     const BARREL = 458;
     const BARRIER = 416;
     const BASALT = 489;
+	const POLISHED_BASALT = 490;
     const AMETHYST = 582;
     const STRIPPED_SPRUCE = 260;
     const STRIPPED_BIRCH = 261;
