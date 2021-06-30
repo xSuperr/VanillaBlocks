@@ -107,7 +107,7 @@ class StoneStairBlock extends Transparent {
     }
     
     public function getToolHarvestLevel(): int {
-      return TieredTool::TIER_WODDEN;
+      return TieredTool::TIER_WOODEN;
     }
     
     public function getFlameEncouragement() : int{
