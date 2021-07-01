@@ -71,7 +71,6 @@ class VanillaBlocks extends PluginBase implements Listener {
         self::registerBlock(new BarrierBlock());
         self::registerBlock(new BasaltBlock(VanillaBlockIds::BASALT, "Basalt"));
         self::registerBlock(new BasaltBlock(VanillaBlockIds::POLISHED_BASALT, "Polished Basalt"));
-        self::registerBlock(new BarrelBlock());
         self::registerBlock(new StoneStairBlock(VanillaBlockIds::ANDESITE_STAIR, "Andesite Stairs"));
         self::registerBlock(new StoneStairBlock(VanillaBlockIds::DIORITE_STAIR, "Diorite Stairs"));
         self::registerBlock(new StoneStairBlock(VanillaBlockIds::POLISHED_ANDESITE_STAIR, "Polished Andesite Stairs"));
