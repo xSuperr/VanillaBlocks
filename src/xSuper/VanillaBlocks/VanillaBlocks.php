@@ -11,6 +11,7 @@ use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\level\Position;
+use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\tile\Tile;
@@ -25,9 +26,12 @@ use xSuper\VanillaBlocks\blocks\CampfireBlock;
 use xSuper\VanillaBlocks\blocks\ChiseledPolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\CrackedPolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\items\CampfireItem;
+use xSuper\VanillaBlocks\blocks\items\RecordItem;
 use xSuper\VanillaBlocks\blocks\items\SoulCampfireItem;
+use xSuper\VanillaBlocks\blocks\JukeboxBlock;
 use xSuper\VanillaBlocks\blocks\LanternBlock;
 use xSuper\VanillaBlocks\blocks\NetherGoldOreBlock;
+use xSuper\VanillaBlocks\blocks\NetherPlanksBlock;
 use xSuper\VanillaBlocks\blocks\overrides\LogBlock;
 use xSuper\VanillaBlocks\blocks\overrides\LogBlock2;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBlock;
@@ -39,6 +43,7 @@ use xSuper\VanillaBlocks\blocks\SoulLanternBlock;
 use xSuper\VanillaBlocks\blocks\SoulSoilBlock;
 use xSuper\VanillaBlocks\blocks\SoulTorchBlock;
 use xSuper\VanillaBlocks\blocks\StrippedLogBlock;
+use xSuper\VanillaBlocks\blocks\tiles\JukeboxTile;
 use xSuper\VanillaBlocks\blocks\WoodenStairBlock;
 use xSuper\VanillaBlocks\blocks\StoneStairBlock;
 use xSuper\VanillaBlocks\blocks\OtherStairBlock;
@@ -124,6 +129,11 @@ class VanillaBlocks extends PluginBase implements Listener {
         self::registerBlock(new TrapdoorBlock(VanillaBlockIds::WARPED_TRAPDOOR, "Warped Trapdoor"));
         self::registerBlock(new LogBlock(), true, false);
         self::registerBlock(new LogBlock2(), true, false);
+        self::registerBlock(new NetherPlanksBlock(VanillaBlockIds::CRIMSON_PLANKS, "Crimson Planks"));
+        self::registerBlock(new NetherPlanksBlock(VanillaBlockIds::WARPED_PLANKS, "Warped Planks"));
+        self::registerBlock(new JukeboxBlock());
+        foreach (self::getRecords() as $record) self::registerItem($record);
+        Tile::registerTile(JukeboxTile::class, ["Jukebox"]);
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
         Tile::registerTile(CampfireTile::class, ["Campfire"]);
     }
@@ -138,6 +148,25 @@ class VanillaBlocks extends PluginBase implements Listener {
     {
         ItemFactory::registerItem($item, $override);
         Item::addCreativeItem($item);
+    }
+
+    public static function getRecords(): array
+    {
+        return [
+            new RecordItem(500, "C418 - 13", LevelSoundEventPacket::SOUND_RECORD_13),
+            new RecordItem(501, "C418 - cat", LevelSoundEventPacket::SOUND_RECORD_CAT),
+            new RecordItem(502, "C418 - blocks", LevelSoundEventPacket::SOUND_RECORD_BLOCKS),
+            new RecordItem(503, "C418 - chirp", LevelSoundEventPacket::SOUND_RECORD_CHIRP),
+            new RecordItem(504, "C418 - far", LevelSoundEventPacket::SOUND_RECORD_FAR),
+            new RecordItem(505, "C418 - mall", LevelSoundEventPacket::SOUND_RECORD_MALL),
+            new RecordItem(506, "C418 - mellohi", LevelSoundEventPacket::SOUND_RECORD_MELLOHI),
+            new RecordItem(507, "C418 - stal", LevelSoundEventPacket::SOUND_RECORD_STAL),
+            new RecordItem(508, "C418 - strad", LevelSoundEventPacket::SOUND_RECORD_STRAD),
+            new RecordItem(509, "C418 - ward", LevelSoundEventPacket::SOUND_RECORD_WARD),
+            new RecordItem(510, "C418 - 11", LevelSoundEventPacket::SOUND_RECORD_11),
+            new RecordItem(511, "C418 - wait", LevelSoundEventPacket::SOUND_RECORD_WAIT),
+            new RecordItem(759, "Lena Raine - Pigstep", LevelSoundEventPacket::SOUND_RECORD_PIGSTEP)
+            ];
     }
 
     public static function getInstance(): VanillaBlocks

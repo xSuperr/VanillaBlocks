@@ -27,3 +27,5 @@ required.
 - [X] Scaffolding
 - [X] All Stairs
 - [X] All Trapdoors
+- [X] Jukebox + All Records
+- [X] Crimson and Warped Planks

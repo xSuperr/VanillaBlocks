@@ -65,4 +65,7 @@ interface VanillaBlockIds
     const SMOOTH_SANDSTONE_STAIR = 432;
     const STONE_STAIR = 435;
     const WARPED_STAIR = 510;
+    const CRIMSON_PLANKS = 497;
+    const WARPED_PLANKS = 498;
+    const JUKEBOX = 84;
 }
