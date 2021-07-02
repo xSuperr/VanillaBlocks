@@ -141,7 +141,10 @@ class VanillaBlocks extends PluginBase implements Listener {
     public static function registerBlock(Block $block, $override = true, $creative = true): void
     {
         BlockFactory::registerBlock($block, $override);
-        if ($creative) Item::addCreativeItem(ItemFactory::get($block->getItemId()));
+        if ($creative) {
+            ItemFactory::registerItem(new ItemBlock($block->getId(), $block->getDamage(), 255 - $block->getId()), $override);
+            ItemFactory::addCreativeItem(ItemFactory::get(255 - $block->getId()));
+        }
     }
 
     public static function registerItem(Item $item, $override = true): void
