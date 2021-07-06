@@ -67,5 +67,4 @@ interface VanillaBlockIds
     const WARPED_STAIR = 510;
     const CRIMSON_PLANKS = 497;
     const WARPED_PLANKS = 498;
-    const JUKEBOX = 84;
 }

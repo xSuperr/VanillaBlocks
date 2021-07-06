@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace xSuper\VanillaBlocks\blocks;
 
+use pocketmine\block\BlockIds;
 use pocketmine\Player;
 use pocketmine\item\Item;
 use pocketmine\block\Block;
@@ -17,7 +18,7 @@ class JukeboxBlock extends Solid {
 
     public function __construct()
     {
-        parent::__construct(VanillaBlockIds::JUKEBOX, 0, "Jukebox");
+        parent::__construct(BlockIds::JUKEBOX, 0, "Jukebox");
     }
 
     public function getFlammability(): int

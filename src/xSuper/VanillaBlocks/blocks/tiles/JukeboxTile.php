@@ -2,8 +2,11 @@
 
 namespace xSuper\VanillaBlocks\blocks\tiles;
 
+use pocketmine\level\particle\GenericParticle;
+use pocketmine\level\particle\Particle;
 use pocketmine\Player;
 use pocketmine\item\Item;
+use pocketmine\Server;
 use pocketmine\tile\Spawnable;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\network\mcpe\protocol\TextPacket;
@@ -30,7 +33,7 @@ class JukeboxTile extends Spawnable {
     public function updateRecord(Item $record = null, Player $player = null)
     {
         if($record == null) $this->dropRecord();
-        else {
+        else if ($record instanceof RecordItem) {
             $player->getInventory()->removeItem($record);
 
             $this->record = $record;
@@ -61,14 +64,22 @@ class JukeboxTile extends Spawnable {
         $this->getLevel()->broadcastLevelSoundEvent($this, LevelSoundEventPacket::SOUND_STOP_RECORD);
     }
 
+    public function onUpdate(): bool
+    {
+        if($this->has_record && Server::getInstance()->getTick() % 30 === 0) $this->getLevel()->addParticle(new GenericParticle($this->add(0.5, 1.25, 0.5), Particle::TYPE_NOTE));
+        return true;
+    }
+
     public function readSaveData(CompoundTag $nbt): void
     {
         if($nbt->hasTag("Record")) $this->record = Item::nbtDeserialize($nbt->getCompoundTag("Record"));
     }
+
     protected function writeSaveData(CompoundTag $nbt): void
     {
         if($this->record !== null) $nbt->setTag($this->record->nbtSerialize(-1, "Record"));
     }
+
     protected function addAdditionalSpawnData(CompoundTag $nbt): void
     {
 
