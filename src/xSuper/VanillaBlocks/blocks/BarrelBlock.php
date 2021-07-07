@@ -41,17 +41,13 @@ class BarrelBlock extends Solid
     public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null): bool
     {
         $damage = 0;
-        if ($player !== null) {
-            $faces = [4, 2, 5, 3];
-            $damage = $faces[$player->getDirection()];
-            if ($player->getPitch() > 45) {
-                $damage = 1;
-            } else if ($player->getPitch() < -45) {
-                $damage = 0;
-            }
-        }
+        if ($face === Vector3::SIDE_UP) $damage = 1;
+        else if ($face === Vector3::SIDE_EAST) $damage = 5;
+        else if ($face === Vector3::SIDE_WEST) $damage = 4;
+        else if ($face === Vector3::SIDE_SOUTH) $damage = 3;
+        else if ($face === Vector3::SIDE_NORTH) $damage = 2;
 
-        $this->setDamage($damage);
+        $this->meta = $damage;
         $this->getLevel()->setBlock($blockReplace, new Placeholder($this, Tile::createTile("Barrel", $this->getLevel(), BarrelTile::createNBT($this))), true);
         return true;
     }
@@ -61,6 +57,11 @@ class BarrelBlock extends Solid
         return [
             ItemFactory::get(255 - $this->getId())
         ];
+    }
+
+    public function getPickedItem(): Item
+    {
+        return ItemFactory::get(255 - $this->getId());
     }
 
     public function onActivate(Item $item, Player $player = null): bool

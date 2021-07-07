@@ -3,18 +3,14 @@
 namespace xSuper\VanillaBlocks\blocks;
 
 use JavierLeon9966\ExtendedBlocks\block\PlaceholderTrait;
-use pocketmine\block\Block;
 use pocketmine\block\Transparent;
-use pocketmine\item\Item;
-use pocketmine\math\Vector3;
-use pocketmine\Player;
 
-class ScaffoldingBlock extends Transparent {
+class Coral extends Transparent {
     use PlaceholderTrait;
 
-    public function __construct(int $meta = 0)
+    public function __construct(int $id, string $name, int $meta = 0)
     {
-        parent::__construct(VanillaBlockIds::SCAFFOLDING, $meta, "Scaffolding");
+        parent::__construct($id, $meta, $name);
     }
 
     public function getBlastResistance(): float
@@ -27,6 +23,7 @@ class ScaffoldingBlock extends Transparent {
         return 0;
     }
 }
+
 
 
 

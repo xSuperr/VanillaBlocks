@@ -29,3 +29,7 @@ required.
 - [X] All Trapdoors
 - [X] Jukebox + All Records
 - [X] Crimson and Warped Planks
+- [X] Sea Pickles
+- [X] Coral Blocks
+- [X] Coral Fans 
+- [X] Coral

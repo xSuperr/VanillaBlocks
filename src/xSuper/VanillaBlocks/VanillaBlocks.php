@@ -9,6 +9,7 @@ use pocketmine\entity\Entity;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\item\Item;
+use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
 use pocketmine\level\Position;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
@@ -24,6 +25,9 @@ use xSuper\VanillaBlocks\blocks\BlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\BlackstoneWall;
 use xSuper\VanillaBlocks\blocks\CampfireBlock;
 use xSuper\VanillaBlocks\blocks\ChiseledPolishedBlackstoneBlock;
+use xSuper\VanillaBlocks\blocks\Coral;
+use xSuper\VanillaBlocks\blocks\CoralBlock;
+use xSuper\VanillaBlocks\blocks\CoralFanBlock;
 use xSuper\VanillaBlocks\blocks\CrackedPolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\items\CampfireItem;
 use xSuper\VanillaBlocks\blocks\items\RecordItem;
@@ -38,6 +42,7 @@ use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneBricksBlock;
 use xSuper\VanillaBlocks\blocks\PolishedBlackstoneWallBlock;
 use xSuper\VanillaBlocks\blocks\ScaffoldingBlock;
+use xSuper\VanillaBlocks\blocks\SeaPickleBlock;
 use xSuper\VanillaBlocks\blocks\SoulCampfireBlock;
 use xSuper\VanillaBlocks\blocks\SoulLanternBlock;
 use xSuper\VanillaBlocks\blocks\SoulSoilBlock;
@@ -132,6 +137,41 @@ class VanillaBlocks extends PluginBase implements Listener {
         self::registerBlock(new NetherPlanksBlock(VanillaBlockIds::CRIMSON_PLANKS, "Crimson Planks"));
         self::registerBlock(new NetherPlanksBlock(VanillaBlockIds::WARPED_PLANKS, "Warped Planks"));
         self::registerBlock(new JukeboxBlock());
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Tube Coral Block"));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Brain Coral Block", 1));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Bubble Coral Block", 2));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Fire Coral Block", 3));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Horn Coral Block", 4));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Dead Tube Coral Block", 8));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Dead Brain Coral Block", 9));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Dead Bubble Coral Block", 10));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Dead Fire Coral Block", 11));
+        self::registerBlock(new CoralBlock(VanillaBlockIds::CORAL_BLOCK, "Dead Horn Coral Block", 12));
+        self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Tube Coral"));
+        self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Brain Coral", 1));
+        self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Bubble Coral", 2));
+        self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Fire Coral", 3));
+        self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Horn Coral", 4));
+        // These are not in PocketMine yet?
+        // self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Dead Tube Coral", 8));
+        // self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Dead Brain Coral", 9));
+        // self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Dead Bubble Coral", 10));
+        // self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Dead Fire Coral", 11));
+        // self::registerBlock(new Coral(VanillaBlockIds::CORAL, "Dead Horn Coral", 12));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::CORAL_FAN, "Tube Coral Fan"));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::CORAL_FAN, "Brain Coral Fan", 1));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::CORAL_FAN, "Bubble Coral Fan", 2));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::CORAL_FAN, "Fire Coral Fan", 3));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::CORAL_FAN, "Horn Coral Fan", 4));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::DEAD_CORAL_FAN, "Dead Tube Coral Fan"));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::DEAD_CORAL_FAN, "Dead Brain Coral Fan", 1));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::DEAD_CORAL_FAN, "Dead Bubble Coral Fan", 2));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::DEAD_CORAL_FAN, "Dead Fire Coral Fan", 3));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::DEAD_CORAL_FAN, "Dead Horn Coral Fan", 4));
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::CORAL_WALL_FAN_1, "Coral Wall"), true, false);
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::CORAL_WALL_FAN_2, "Coral Wall"), true, false);
+        self::registerBlock(new CoralFanBlock(VanillaBlockIds::CORAL_WALL_FAN_3, "Coral Wall"), true, false);
+        self::registerBlock(new SeaPickleBlock());
         foreach (self::getRecords() as $record) self::registerItem($record);
         Tile::registerTile(JukeboxTile::class, ["Jukebox"]);
         Tile::registerTile(BarrelTile::class, ["Barrel"]);
@@ -141,7 +181,13 @@ class VanillaBlocks extends PluginBase implements Listener {
     public static function registerBlock(Block $block, $override = true, $creative = true): void
     {
         BlockFactory::registerBlock($block, $override);
-        if ($creative) Item::addCreativeItem(ItemFactory::get($block->getItemId()));
+        if ($creative) {
+            if ($block->getId() > 255) $id = 255 - $block->getId();
+            else $id = $block->getId();
+            $item = new ItemBlock($block->getId(), $block->getDamage(), $id);
+            ItemFactory::registerItem($item, $override);
+            Item::addCreativeItem($item);
+        }
     }
 
     public static function registerItem(Item $item, $override = true): void

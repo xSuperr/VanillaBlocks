@@ -66,8 +66,11 @@ class JukeboxTile extends Spawnable {
 
     public function onUpdate(): bool
     {
-        if($this->has_record && Server::getInstance()->getTick() % 30 === 0) $this->getLevel()->addParticle(new GenericParticle($this->add(0.5, 1.25, 0.5), Particle::TYPE_NOTE));
-        return true;
+        if($this->has_record && Server::getInstance()->getTick() % 30 === 0){
+            $this->getLevel()->addParticle(new GenericParticle($this->add(0.5, 1.25, 0.5), Particle::TYPE_NOTE));
+            return true;
+        }
+        return false;
     }
 
     public function readSaveData(CompoundTag $nbt): void

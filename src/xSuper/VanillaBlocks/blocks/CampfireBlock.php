@@ -50,14 +50,17 @@ class CampfireBlock extends Transparent
     {
         $below = $this->getSide(Vector3::SIDE_DOWN);
 
-        if ($below->getId() === Item::AIR || $below->isTransparent()) return false;
+        if ($below->getId() === Item::AIR || $below->isTransparent() || $face !== Vector3::SIDE_UP) return false;
 
         $damage = 0;
         if($player !== null) {
-            $damage = $player->getDirection();
+            if ($player->getDirection() === 0) $damage = 3;
+            else if ($player->getDirection() === 1) $damage = 2;
+            else if ($player->getDirection() === 2) $damage = 1;
+            else if ($player->getDirection() === 3) $damage = 0;
         }
 
-        $this->setDamage($damage);
+        $this->meta = $damage;
         $nbt = CampfireTile::createNBT($this);
         $nbt->setInt('ItemTime1', 0);
         $nbt->setInt('ItemTime2', 0);

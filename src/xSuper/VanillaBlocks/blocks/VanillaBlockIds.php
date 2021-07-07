@@ -67,4 +67,12 @@ interface VanillaBlockIds
     const WARPED_STAIR = 510;
     const CRIMSON_PLANKS = 497;
     const WARPED_PLANKS = 498;
+    const CORAL_BLOCK = 387;
+    const CORAL = 386;
+    const CORAL_FAN = 388;
+    const DEAD_CORAL_FAN = 389;
+    const CORAL_WALL_FAN_1 = 390;
+    const CORAL_WALL_FAN_2 = 391;
+    const CORAL_WALL_FAN_3 = 392;
+    const SEA_PICKLE = 411;
 }

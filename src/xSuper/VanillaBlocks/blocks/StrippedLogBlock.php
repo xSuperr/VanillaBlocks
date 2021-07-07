@@ -37,17 +37,10 @@ class StrippedLogBlock extends Solid {
 
     public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null) : bool{
         $damage = 0;
-        if($player !== null) {
-            $faces = [1, 2, 1, 2];
-            $damage = $faces[$player->getDirection()];
-            if ($player->getPitch() > 45) {
-                $damage = 0;
-            } else if ($player->getPitch() < -45) {
-                $damage = 5;
-            }
-        }
+        if ($face === Vector3::SIDE_EAST || $face === Vector3::SIDE_WEST) $damage = 1;
+        else if ($face === Vector3::SIDE_NORTH || $face === Vector3::SIDE_SOUTH) $damage = 2;
 
-        $this->setDamage($damage);
+        $this->meta = $damage;
         return $this->getLevelNonNull()->setBlock($blockReplace, new Placeholder($this), true);
     }
 
@@ -56,6 +49,11 @@ class StrippedLogBlock extends Solid {
         return [
             ItemFactory::get(255 - $this->getId())
         ];
+    }
+
+    public function getPickedItem(): Item
+    {
+        return ItemFactory::get(255 - $this->getId());
     }
 }
 

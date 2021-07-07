@@ -69,13 +69,13 @@ class SoulLanternBlock extends Solid {
 
         if ((!$blockClicked->isTransparent() or $blockClicked->getId() === self::FENCE or $blockClicked->getId() === self::COBBLESTONE_WALL) && $face !== Vector3::SIDE_DOWN) {
             if ($face !== 1) return false;
-            $this->setDamage(0);
+            $this->meta = 0;
             $this->getLevelNonNull()->setBlock($blockReplace, new Placeholder($this), true, true);
 
             return true;
         } else if ($face !== Vector3::SIDE_UP) {
             if ($above->getId() === Item::AIR) return false;
-            $this->setDamage(1);
+            $this->meta = 1;
             $this->getLevelNonNull()->setBlock($blockReplace, new Placeholder($this), true, true);
 
             return true;
@@ -89,6 +89,11 @@ class SoulLanternBlock extends Solid {
         return [
             ItemFactory::get(255 - $this->getId())
         ];
+    }
+
+    public function getPickedItem(): Item
+    {
+        return ItemFactory::get(255 - $this->getId());
     }
 }
 
