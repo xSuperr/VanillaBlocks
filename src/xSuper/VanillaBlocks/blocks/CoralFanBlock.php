@@ -271,7 +271,6 @@ class CoralFanBlock extends Transparent {
     {
         if ($this->isDead()) $id = VanillaBlockIds::DEAD_CORAL_FAN;
         else $id = VanillaBlockIds::CORAL_FAN;
-        echo 255 - $id . "\n";
         return ItemFactory::get(255 - $id, $this->getMetaFromType());
     }
 
