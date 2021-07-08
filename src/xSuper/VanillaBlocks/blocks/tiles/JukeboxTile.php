@@ -78,15 +78,16 @@ class JukeboxTile extends Spawnable {
     public function onUpdate(): bool
     {
         if ($this->hasRecord() && !$this->finishedPlaying) {
-            if ($this->recordMaxDuration === -1) $this->recordMaxDuration = RecordItem::getRecordLength($this->record->getId()) * 20;
+            if ($this->recordMaxDuration === -1) $this->recordMaxDuration = RecordItem::getRecordLength($this->record->getId()) * 20; 
 
             $this->recordDuration++;
             $this->validateDuration();
 
-            if ($this->finishedPlaying) return true;
+            if ($this->finishedPlaying) return false;
             if (Server::getInstance()->getTick() % 30 === 0) $this->getLevel()->addParticle(new GenericParticle($this->add(0.5, 1.25, 0.5), Particle::TYPE_NOTE));
+            return true;
         }
-        return true;
+        return false;
     }
 
     public function hasRecord(): bool
