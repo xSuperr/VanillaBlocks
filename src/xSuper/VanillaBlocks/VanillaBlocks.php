@@ -6,6 +6,8 @@ use JavierLeon9966\ExtendedBlocks\block\BlockFactory;
 use JavierLeon9966\ExtendedBlocks\block\Placeholder;
 use pocketmine\block\Block;
 use pocketmine\entity\Entity;
+use pocketmine\event\entity\EntityLevelChangeEvent;
+use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\item\Item;
@@ -13,6 +15,7 @@ use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
 use pocketmine\level\Position;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
+use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\tile\Tile;
@@ -218,6 +221,28 @@ class VanillaBlocks extends PluginBase implements Listener {
     public static function getInstance(): VanillaBlocks
     {
         return self::$instance;
+    }
+
+    public function onTeleport(EntityTeleportEvent $event): void // TODO: Test these fixes
+    {
+        if ($event->getEntity() instanceof Player) {
+            $player = $event->getEntity();
+
+            $player->setGenericFlag(Entity::DATA_FLAG_IN_SCAFFOLDING, false);
+            $player->setGenericFlag(Entity::DATA_FLAG_FALL_THROUGH_SCAFFOLDING, false);
+            $player->setGenericFlag(Entity::DATA_FLAG_OVER_SCAFFOLDING, false);
+        }
+    }
+
+    public function onLevelChange(EntityLevelChangeEvent $event): void // TODO: Test these fixes (and if this is even needed)
+    {
+        if ($event->getEntity() instanceof Player) {
+            $player = $event->getEntity();
+
+            $player->setGenericFlag(Entity::DATA_FLAG_IN_SCAFFOLDING, false);
+            $player->setGenericFlag(Entity::DATA_FLAG_FALL_THROUGH_SCAFFOLDING, false);
+            $player->setGenericFlag(Entity::DATA_FLAG_OVER_SCAFFOLDING, false);
+        }
     }
 
     public function onPlayerMove(PlayerMoveEvent $event): void
