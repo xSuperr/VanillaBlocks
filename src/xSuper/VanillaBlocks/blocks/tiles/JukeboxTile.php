@@ -14,12 +14,16 @@ use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use xSuper\VanillaBlocks\blocks\items\RecordItem;
 
 class JukeboxTile extends Spawnable {
-    public $has_record = false;
     public $record = null;
+
+    private $finishedPlaying = false;
+
+    private $recordDuration = 0;
+    private $recordMaxDuration = -1;
 
     public function onInteract(Item $item, Player $player = null)
     {
-        if($this->has_record) $this->updateRecord();
+        if($this->hasRecord()) $this->updateRecord();
         else if($item instanceof RecordItem) $this->updateRecord($item, $player);
 
         $this->scheduleUpdate();
@@ -27,17 +31,18 @@ class JukeboxTile extends Spawnable {
 
     public function onBreak()
     {
-        if($this->has_record) $this->updateRecord();
+        if($this->hasRecord()) $this->updateRecord();
     }
 
     public function updateRecord(Item $record = null, Player $player = null)
     {
-        if($record == null) $this->dropRecord();
+        if($record === null) $this->dropRecord();
         else if ($record instanceof RecordItem) {
             $player->getInventory()->removeItem($record);
 
             $this->record = $record;
-            $this->has_record = true;
+            $this->recordDuration = 0;
+            $this->finishedPlaying = false;
 
             $this->getLevel()->broadcastLevelSoundEvent($this, $record->getSoundId());
 
@@ -51,11 +56,17 @@ class JukeboxTile extends Spawnable {
 
     public function dropRecord()
     {
-        if($this->has_record){
+        if($this->hasRecord()){
             $this->getLevel()->dropItem($this->asVector3(), $this->record);
-            $this->has_record = false;
             $this->record = null;
+            $this->recordDuration = 0;
             $this->stopSound();
+        }
+    }
+
+    public function validateDuration(): void{
+        if($this->recordDuration >= $this->recordMaxDuration){
+            $this->finishedPlaying = true;
         }
     }
 
@@ -66,21 +77,33 @@ class JukeboxTile extends Spawnable {
 
     public function onUpdate(): bool
     {
-        if($this->has_record && Server::getInstance()->getTick() % 30 === 0){
-            $this->getLevel()->addParticle(new GenericParticle($this->add(0.5, 1.25, 0.5), Particle::TYPE_NOTE));
-            return true;
+        if ($this->hasRecord() && !$this->finishedPlaying) {
+            if ($this->recordMaxDuration === -1) $this->recordMaxDuration = RecordItem::getRecordLength($this->record->getId()) * 20;
+
+            $this->recordDuration++;
+            $this->validateDuration();
+
+            if ($this->finishedPlaying) return true;
+            if (Server::getInstance()->getTick() % 30 === 0) $this->getLevel()->addParticle(new GenericParticle($this->add(0.5, 1.25, 0.5), Particle::TYPE_NOTE));
         }
-        return false;
+        return true;
+    }
+
+    public function hasRecord(): bool
+    {
+        return $this->record !== null;
     }
 
     public function readSaveData(CompoundTag $nbt): void
     {
-        if($nbt->hasTag("Record")) $this->record = Item::nbtDeserialize($nbt->getCompoundTag("Record"));
+        if($nbt->hasTag("RecordItem")) $this->record = Item::nbtDeserialize($nbt->getCompoundTag("RecordItem"));
+        if($nbt->hasTag("RecordDuration")) $this->recordDuration = $nbt->getInt("RecordDuration");
     }
 
     protected function writeSaveData(CompoundTag $nbt): void
     {
-        if($this->record !== null) $nbt->setTag($this->record->nbtSerialize(-1, "Record"));
+        if($this->record !== null) $nbt->setTag($this->record->nbtSerialize(-1, "RecordItem"));
+        $nbt->setInt("RecordDuration", $this->recordDuration);
     }
 
     protected function addAdditionalSpawnData(CompoundTag $nbt): void
