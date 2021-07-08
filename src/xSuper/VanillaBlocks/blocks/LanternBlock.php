@@ -10,6 +10,7 @@ use pocketmine\block\Solid;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\TieredTool;
+use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
@@ -94,6 +95,17 @@ class LanternBlock extends Solid {
     public function getPickedItem(): Item
     {
         return ItemFactory::get(255 - $this->getId());
+    }
+
+    public function recalculateCollisionBoxes(): array
+    {
+        $bb = new AxisAlignedBB(0, 0, 0, 1, 1 ,1);
+        $bb->maxY += -($this->meta === 1 ? 6 / 16 : 8 / 16);
+        $bb->minY -= -($this->meta === 1 ? 2 / 16 : 0);
+        $bb->minX -= -(5 / 16);
+        $bb->maxX += -(5 / 16);
+
+        return [$bb];
     }
 }
 
