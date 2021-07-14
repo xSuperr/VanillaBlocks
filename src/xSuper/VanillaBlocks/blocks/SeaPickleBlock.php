@@ -45,6 +45,7 @@ class SeaPickleBlock extends Transparent {
 
     public function onActivate(Item $item, Player $player = null): bool
     {
+        if (!$item->equals(ItemFactory::get(255 - $this->getId()), false, false)) return true;
         if ($this->getAmount() >= 4) return true;
         else {
             $this->meta = $this->meta + 1;
