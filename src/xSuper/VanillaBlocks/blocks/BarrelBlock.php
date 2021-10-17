@@ -40,18 +40,45 @@ class BarrelBlock extends Solid
 
     public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null): bool
     {
-        $damage = 0;
-        if ($face === Vector3::SIDE_UP) $damage = 1;
-        else if ($face === Vector3::SIDE_EAST) $damage = 5;
-        else if ($face === Vector3::SIDE_WEST) $damage = 4;
-        else if ($face === Vector3::SIDE_SOUTH) $damage = 3;
-        else if ($face === Vector3::SIDE_NORTH) $damage = 2;
+        if(abs($player->getPosition()->getX() - $this->asPosition()->getX()) < 2 && abs($player->getPosition()->getZ() - $this->asPosition()->getZ()) < 2){
+            $y = $player->asPosition()->getY()+1;
 
-        $this->meta = $damage;
+            if($y - $this->asPosition()->getY() > 2){
+                $this->facing = Facing::UP;
+            }elseif($this->asPosition()->getY() - $y > 0){
+                $this->facing = Facing::DOWN;
+            }else{
+                $this->facing = Facing::opposite($this->getHorizontalFacing($player));
+            }
+        }else{
+            $this->facing = Facing::opposite($this->getHorizontalFacing($player));
+        }
+
+        $this->meta = $this->facing | $this->meta << 2;
+
         $this->getLevel()->setBlock($blockReplace, new Placeholder($this, Tile::createTile("Barrel", $this->getLevel(), BarrelTile::createNBT($this))), true);
         return true;
     }
 
+    public function getHorizontalFacing(Player $player) : int{
+        $angle = fmod($player->asLocation()->yaw, 360);
+        if($angle < 0){
+            $angle += 360.0;
+        }
+
+        if((0 <= $angle and $angle < 45) or (315 <= $angle and $angle < 360)){
+            return Facing::SOUTH;
+        }
+        if(45 <= $angle and $angle < 135){
+            return Facing::WEST;
+        }
+        if(135 <= $angle and $angle < 225){
+            return Facing::NORTH;
+        }
+
+        return Facing::EAST;
+    }
+    
     public function getDrops(Item $item): array // Give a new item because the old items wouldn't stack (Due to damage?)
     {
         return [
