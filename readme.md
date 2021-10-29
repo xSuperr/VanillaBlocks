@@ -1,35 +1,8 @@
 # Vanilla Blocks
-This plugin aims to add all blocks not included in PocketMine.
-As of right now the ExtendedBlocks plugin is required to add blocks with IDs above 255.
+A plugin to add more blocks with functionality to pocketmine!
+This is the PM4 version, for the PM3 version check the 3.0 branch.
 
-Once PocketMine 4.0 Releases, the ExtendedBlocks plugin will no longer be
-required.
 
 ## Current Blocks:
 
-- [X] Ancient Debris
-- [X] Barrels
-- [X] Basalt and Polished Basalt
-- [X] Barriers - [/give player -161]
-- [X] Nether Gold Ore  
-- [X] Lanterns
-- [X] Campfire
-- [X] Blackstone Block Variants
-- [ ] Amethyst Block [Unmapped]
-- [X] Stripped Logs
-- [ ] Beehives
-- [ ] Bee Nests
-- [ ] Chains
-- [X] Soul Torch
-- [X] Soul Campfire
-- [X] Soul Lantern
-- [X] Soul Soil  
-- [X] Scaffolding
-- [X] All Stairs
-- [X] All Trapdoors
-- [X] Jukebox + All Records
-- [X] Crimson and Warped Planks
-- [X] Sea Pickles
-- [X] Coral Blocks
-- [X] Coral Fans 
-- [X] Coral
+- Starting tomorrow 
