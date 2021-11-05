@@ -258,12 +258,10 @@ class VanillaBlocks extends PluginBase implements Listener {
                 $event->getPlayer()->setGenericFlag(Entity::DATA_FLAG_OVER_SCAFFOLDING);
             } else if ($from instanceof Placeholder) {
                 $from = $from->getBlock();
-                if (!$to instanceof ScaffoldingBlock) {
-                    if ($from instanceof ScaffoldingBlock) {
-                        $event->getPlayer()->setGenericFlag(Entity::DATA_FLAG_IN_SCAFFOLDING, false);
-                        $event->getPlayer()->setGenericFlag(Entity::DATA_FLAG_FALL_THROUGH_SCAFFOLDING, false);
-                        $event->getPlayer()->setGenericFlag(Entity::DATA_FLAG_OVER_SCAFFOLDING, false);
-                    }
+                if ($from instanceof ScaffoldingBlock) {
+                    $event->getPlayer()->setGenericFlag(Entity::DATA_FLAG_IN_SCAFFOLDING, false);
+                    $event->getPlayer()->setGenericFlag(Entity::DATA_FLAG_FALL_THROUGH_SCAFFOLDING, false);
+                    $event->getPlayer()->setGenericFlag(Entity::DATA_FLAG_OVER_SCAFFOLDING, false);
                 }
             }
         } else if ($under instanceof Placeholder) {

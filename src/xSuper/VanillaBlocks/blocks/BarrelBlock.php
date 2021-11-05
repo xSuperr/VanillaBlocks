@@ -44,14 +44,14 @@ class BarrelBlock extends Solid
             $y = $player->asPosition()->getY()+1;
 
             if($y - $this->asPosition()->getY() > 2){
-                $this->facing = Facing::UP;
+                $this->facing = 0 << 1 | 1;
             }elseif($this->asPosition()->getY() - $y > 0){
-                $this->facing = Facing::DOWN;
+                $this->facing = 0 << 1;
             }else{
-                $this->facing = Facing::opposite($this->getHorizontalFacing($player));
+                $this->facing = $this->getHorizontalFacing($player) ^ 1;
             }
         }else{
-            $this->facing = Facing::opposite($this->getHorizontalFacing($player));
+            $this->facing = $this->getHorizontalFacing($player) ^ 1;
         }
 
         $this->meta = $this->facing | $this->meta << 2;
@@ -67,16 +67,16 @@ class BarrelBlock extends Solid
         }
 
         if((0 <= $angle and $angle < 45) or (315 <= $angle and $angle < 360)){
-            return Facing::SOUTH;
+            return 1 << 1 | 1;
         }
         if(45 <= $angle and $angle < 135){
-            return Facing::WEST;
+            return 2 << 1;
         }
         if(135 <= $angle and $angle < 225){
-            return Facing::NORTH;
+            return 1 << 1;
         }
 
-        return Facing::EAST;
+        return 2 << 1 | 1;
     }
     
     public function getDrops(Item $item): array // Give a new item because the old items wouldn't stack (Due to damage?)
