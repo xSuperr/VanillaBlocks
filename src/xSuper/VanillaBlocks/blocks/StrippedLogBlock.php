@@ -20,31 +20,35 @@ class StrippedLogBlock extends Solid {
         parent::__construct($id, $meta, $name);
     }
 
-    public function getBlastResistance(): float
-    {
+    public function getBlastResistance(): float {
         return 2;
     }
 
-    public function getHardness(): float
-    {
+    public function getHardness(): float {
         return 2;
     }
 
-    public function getToolType(): int
-    {
+    public function getToolType(): int {
         return BlockToolType::TYPE_AXE;
     }
 
     public function place(Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, Player $player = null) : bool{
-        $damage = 0;
-        if ($face === Vector3::SIDE_EAST || $face === Vector3::SIDE_WEST) $damage = 1;
-        else if ($face === Vector3::SIDE_NORTH || $face === Vector3::SIDE_SOUTH) $damage = 2;
-
-        $this->meta = $damage;
+        switch ($face) {
+            case Vector3::SIDE_NORTH:
+            case Vector3::SIDE_SOUTH:
+                $this->meta = 2;
+            case Vector3::SIDE_EAST:
+            case Vector3::SIDE_WEST:
+                $this->meta = 1;
+                break;
+            default:
+                $this->meta = 0;
+                break;
+        }
         return $this->getLevelNonNull()->setBlock($blockReplace, new Placeholder($this), true);
     }
 
-    public function getDrops(Item $item): array // Give a new item because the old items wouldn't stack (Due to damage?)
+    public function getDrops(Item $item): array
     {
         return [
             ItemFactory::get(255 - $this->getId())

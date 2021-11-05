@@ -18,6 +18,8 @@ class BarrelBlock extends Solid
 {
     use PlaceholderTrait;
 
+    private $facing;
+
     public function __construct(int $meta = 0)
     {
         parent::__construct(VanillaBlockIds::BARREL, $meta, "Barrel");

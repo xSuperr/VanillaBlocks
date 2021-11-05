@@ -1,6 +1,6 @@
 name: VanillaBlocks
-version: 1.0.7
-api: 3.0.0
+version: 1.0.8
+api: 3.25.2
 main: xSuper\VanillaBlocks\VanillaBlocks
 author: [xSuper, NguyenDuck]
 depend:
