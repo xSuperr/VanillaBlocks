@@ -11,6 +11,7 @@ interface VanillaBlockIds
     const BARRIER = 416;
     const BASALT = 489;
     const BIRCH_TRAPDOOR = 401;
+    const BEE_NEST = 473;
     const BLACKSTONE = 528;
     const BLACKSTONE_WALL = 532;
     const CAMPFIRE = 464;
