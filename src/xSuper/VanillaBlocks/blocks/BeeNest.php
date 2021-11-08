@@ -21,9 +21,9 @@ class BeeNest extends Solid
 	protected $meta = 0;
 	protected $name = "Bee Nest";
 
-	function __construct()
+	function __construct($id, $name, $meta = 0)
 	{
-		parent::__construct($this->id, $this->meta, $this->name);
+		parent::__construct($id, $meta, $name);
 	}
 
 	public function getBlastResistance(): float

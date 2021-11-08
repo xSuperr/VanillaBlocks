@@ -14,9 +14,9 @@ As of right now the ExtendedBlocks plugin is required to add blocks with IDs abo
 - [X] Blackstone Block Variants
 - [ ] Amethyst Block [Unmapped]
 - [X] Stripped Logs
-- [ ] Beehives
+- [x] Beehive
 - [x] Bee Nest
-- [ ] Chains
+- [x] Chains
 - [X] Soul Torch
 - [X] Soul Campfire
 - [X] Soul Lantern

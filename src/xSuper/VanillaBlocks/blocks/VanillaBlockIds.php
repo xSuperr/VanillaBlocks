@@ -12,11 +12,13 @@ interface VanillaBlockIds
     const BASALT = 489;
     const BIRCH_TRAPDOOR = 401;
     const BEE_NEST = 473;
+    const BEEHIVE = 474;
     const BLACKSTONE = 528;
     const BLACKSTONE_WALL = 532;
     const CAMPFIRE = 464;
     const CAMPFIRE_ITEM = 720;
     const CHISELED_POLISHED_BLACKSTONE = 534;
+    const CHAIN = 541;
     const CORAL = 386;
     const CORAL_BLOCK = 387;
     const CORAL_FAN = 388;

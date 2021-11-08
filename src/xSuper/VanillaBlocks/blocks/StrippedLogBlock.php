@@ -37,6 +37,7 @@ class StrippedLogBlock extends Solid {
             case Vector3::SIDE_NORTH:
             case Vector3::SIDE_SOUTH:
                 $this->meta = 2;
+                break;
             case Vector3::SIDE_EAST:
             case Vector3::SIDE_WEST:
                 $this->meta = 1;
