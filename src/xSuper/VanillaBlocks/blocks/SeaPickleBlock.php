@@ -60,11 +60,7 @@ class SeaPickleBlock extends Transparent {
 
     public function getAmount(): int
     {
-        if ($this->meta === 0) return 1;
-        else if ($this->meta === 1) return 2;
-        else if ($this->meta === 2) return 3;
-        else if ($this->meta === 3) return 4;
-        return 1;
+        return $this->meta + 1;
     }
 
     public function getDrops(Item $item): array
