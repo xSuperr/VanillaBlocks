@@ -8,6 +8,7 @@ use JavierLeon9966\ExtendedBlocks\block\Placeholder;
 use JavierLeon9966\ExtendedBlocks\block\PlaceholderTrait;
 use pocketmine\block\Solid;
 use pocketmine\block\BlockToolType;
+use pocketmine\item\TieredTool;
 use pocketmine\Player;
 
 /**
